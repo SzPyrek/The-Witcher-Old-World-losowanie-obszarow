@@ -5,7 +5,7 @@ Prosta i lekka aplikacja webowa wspomagająca rozgrywkę w grę planszową **Wie
 Służy do losowania numerów żetonów obszarów oraz żetonów słabości bez konieczności ciągłego tasowania i wyciągania fizycznych elementów z pudełka.
 
 ## 🔗 Link do aplikacji
-👉 **[KLIKNIJ TUTAJ, ABY OTWORZYĆ APLIKACJĘ](TUTAJ WKLEJ LINK DO GITHUB PAGES)** 👈
+👉 **[KLIKNIJ TUTAJ, ABY OTWORZYĆ APLIKACJĘ](https://szpyrek.github.io/witcher-token-manager/)** 👈
 
 ---
 
