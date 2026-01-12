@@ -100,37 +100,99 @@
         }
         .count-btn.selected { background-color: #f1c40f; color: #2c3e50; border-color: #f1c40f; font-weight: bold; }
 
+        /* STYLE DRAFTU (WYBORU) */
+        .draft-area {
+            display: none; /* Ukryte do momentu startu */
+            margin-top: 20px;
+        }
+        .draft-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .draft-card {
+            background-color: #34495e;
+            border: 2px solid #7f8c8d;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .draft-card:hover { transform: scale(1.02); border-color: #f1c40f; }
+        .draft-card:active { transform: scale(0.98); background-color: #2c3e50; }
+        
+        .draft-school-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ecf0f1;
+        }
+        .btn-select {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
         .witcher-result-list {
             list-style: none;
             padding: 0;
             margin-top: 20px;
         }
+        
         .witcher-card {
             background-color: #34495e;
             margin-bottom: 10px;
             padding: 15px;
             border-radius: 8px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
             border-left: 5px solid #7f8c8d;
             animation: slideIn 0.3s ease-out forwards;
             opacity: 0;
+            gap: 8px;
         }
         @keyframes slideIn { to { opacity: 1; transform: translateX(0); } from { opacity: 0; transform: translateX(-10px); } }
+
+        .witcher-header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+        }
+
+        .resource-group {
+            display: flex;
+            gap: 20px;
+            font-size: 0.95rem;
+            color: #f1c40f;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            padding-top: 8px;
+        }
 
         .p-name { font-size: 0.9rem; color: #bdc3c7; }
         .w-school { font-size: 1.2rem; font-weight: bold; color: #ecf0f1; }
 
         /* Kolory szkół */
-        .school-wilk { border-color: #8d6e63; color: #d7ccc8; }      /* Brązowy */
-        .school-kot { border-color: #3867d6; color: #a5b1de; }       /* Granatowy */
-        .school-zmija { border-color: #27ae60; color: #a3e4b3; }     /* Zielony */
-        .school-gryf { border-color: #f1c40f; color: #f9e79f; }      /* Złoty */
-        .school-niedzwiedz { border-color: #c0392b; color: #e6b0aa; }/* Czerwony */
-        .school-mantikora { border-color: #e67e22; color: #edbb99; } /* Pomarańczowy */
+        .school-wilk { border-color: #8d6e63; color: #d7ccc8; }
+        .school-kot { border-color: #3867d6; color: #a5b1de; }
+        .school-zmija { border-color: #27ae60; color: #a3e4b3; }
+        .school-gryf { border-color: #f1c40f; color: #f9e79f; }
+        .school-niedzwiedz { border-color: #c0392b; color: #e6b0aa; }
+        .school-mantikora { border-color: #e67e22; color: #edbb99; }
 
-        /* --- SEKCJA ŻETONÓW (Twoje style) --- */
+        /* --- SEKCJA ŻETONÓW --- */
         .zones-container { display: flex; flex-direction: column; gap: 25px; max-width: 600px; margin: 40px auto 0 auto; }
         .zone-row { border: 1px solid #34495e; border-radius: 12px; padding: 12px; background-color: #2c3e50; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .zone-title { margin: 0 0 10px 0; font-size: 1.2rem; text-transform: uppercase; border-bottom: 2px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
@@ -156,12 +218,11 @@
         .token { background-color: #95a5a6; color: #2c3e50; font-weight: bold; padding: 6px 12px; border-radius: 4px; font-size: 14px; cursor: pointer; user-select: none; border: 1px solid #7f8c8d; }
         .weakness-panel .token { background-color: #574b90; color: #ecf0f1; font-family: 'Times New Roman', serif; border: 1px solid #303841; }
 
-        /* --- NOWE STYLE DLA POTWORÓW --- */
+        /* --- STYLE DLA POTWORÓW --- */
         .title-lvl1 { color: #ffab91; }
         .title-lvl2 { color: #ef5350; }
         .title-lvl3 { color: #c62828; }
 
-        /* Dodatkowe klasy dla kolorów przycisków i etykiet */
         .btn-lvl1 { background-color: #ffab91; color: #2c3e50; }
         .btn-lvl1:active { background-color: #e69a8d; }
         .label-lvl1 { color: #ffab91; }
@@ -173,7 +234,6 @@
         .btn-lvl3 { background-color: #c62828; color: #ecf0f1; }
         .btn-lvl3:active { background-color: #b71c1c; }
         .label-lvl3 { color: #c62828; }
-
 
         .monster-token {
             background-color: #34495e; 
@@ -232,15 +292,27 @@
     <div id="view-witchers" class="app-section">
         <button class="back-btn" onclick="switchView('view-menu')">⬅ Menu</button>
         <h1>Wybór Szkoły</h1>
-        <p class="subtitle">Wylosuj wiedźminów dla graczy</p>
+        <p class="subtitle">Wybierz liczbę graczy i rozpocznij losowanie</p>
 
-        <div class="witcher-setup">
+        <div id="witcher-setup-phase" class="witcher-setup">
             <label class="player-count-label">Liczba graczy:</label>
             <div class="count-btn-group" id="player-buttons"></div>
-            <button class="draw-btn" onclick="randomizeWitchers()">LOSUJ SZKOŁY</button>
+            <button class="draw-btn" onclick="startDraft()">ROZPOCZNIJ WYBÓR</button>
         </div>
 
-        <ul id="witcher-results" class="witcher-result-list"></ul>
+        <div id="witcher-draft-phase" class="draft-area">
+            <h2 id="draft-player-title" style="color: #f1c40f; margin-bottom: 5px;">GRACZ 1</h2>
+            <p style="font-size: 0.9rem; color: #bdc3c7;">Wybierz jedną ze szkół:</p>
+            
+            <div id="draft-options-container" class="draft-options">
+                </div>
+        </div>
+
+        <div id="witcher-results-phase" style="display:none;">
+            <h2 style="color: #27ae60;">WYNIKI</h2>
+            <ul id="witcher-results" class="witcher-result-list"></ul>
+            <button class="draw-btn" onclick="resetDraft()" style="margin-top: 20px; background-color: #34495e;">🔄 Od nowa</button>
+        </div>
     </div>
 
     <div id="view-tokens" class="app-section">
@@ -347,7 +419,6 @@
         <p class="subtitle">Losowanie Potworów wg Poziomów</p>
 
         <div class="zones-container">
-            
             <div class="zone-row">
                 <h2 class="zone-title title-lvl1">Potwór Poziom I</h2>
                 <div class="panel">
@@ -394,7 +465,6 @@
             </div>
 
             <button class="reset-monsters-btn" onclick="resetMonsters()">⚠️ Resetuj Wszystkie Potwory</button>
-
         </div>
     </div>
 
@@ -406,21 +476,36 @@
             window.scrollTo(0,0);
         }
 
-        // === LOGIKA WIEDŹMINÓW ===
+        // === LOGIKA WIEDŹMINÓW (DRAFT) ===
         const witcherSchools = [
-            { name: "Wilka", icon: "🐺", style: "school-wilk" },
-            { name: "Kota", icon: "🐱", style: "school-kot" },
-            { name: "Żmii", icon: "🐍", style: "school-zmija" },
-            { name: "Niedźwiedzia", icon: "🐻", style: "school-niedzwiedz" },
-            { name: "Gryfa", icon: "🦅", style: "school-gryf" },
-            { name: "Mantikory", icon: "🦁", style: "school-mantikora" }
+            { name: "Wilka", icon: "🐺", style: "school-wilk", id: 0 },
+            { name: "Kota", icon: "🐱", style: "school-kot", id: 1 },
+            { name: "Żmii", icon: "🐍", style: "school-zmija", id: 2 },
+            { name: "Niedźwiedzia", icon: "🐻", style: "school-niedzwiedz", id: 3 },
+            { name: "Gryfa", icon: "🦅", style: "school-gryf", id: 4 },
+            { name: "Mantikory", icon: "🦁", style: "school-mantikora", id: 5 }
         ];
 
+        // ZASOBY STARTOWE (Zgodnie z instrukcją)
+        const startingResources = {
+            1: [{ cards: 3, gold: 2 }],
+            2: [{ cards: 3, gold: 2 }, { cards: 5, gold: 4 }],
+            3: [{ cards: 3, gold: 2 }, { cards: 4, gold: 4 }, { cards: 5, gold: 6 }],
+            4: [{ cards: 2, gold: 4 }, { cards: 3, gold: 5 }, { cards: 4, gold: 6 }, { cards: 5, gold: 7 }],
+            5: [{ cards: 2, gold: 5 }, { cards: 3, gold: 5 }, { cards: 4, gold: 5 }, { cards: 4, gold: 7 }, { cards: 5, gold: 7 }]
+        };
+
         let selectedPlayerCount = 1;
+        
+        // Zmienne do obsługi Draftu
+        let draftPool = [];
+        let draftCurrentPlayer = 0;
+        let draftResults = [];
 
         function initWitcherButtons() {
             const container = document.getElementById('player-buttons');
-            for (let i = 1; i <= 6; i++) {
+            // Zmiana: Limit do 5 graczy (bo 6. gracz to homebrew/dodatki)
+            for (let i = 1; i <= 5; i++) {
                 const btn = document.createElement('button');
                 btn.className = `count-btn ${i === 1 ? 'selected' : ''}`;
                 btn.innerText = i;
@@ -433,22 +518,118 @@
             }
         }
 
-        function randomizeWitchers() {
+        // 1. Rozpoczęcie Draftu
+        function startDraft() {
+            // Przygotuj pulę (kopię wszystkich szkół)
+            draftPool = [...witcherSchools];
+            draftResults = [];
+            draftCurrentPlayer = 1;
+
+            // Ukryj setup, pokaż obszar draftu
+            document.getElementById('witcher-setup-phase').style.display = 'none';
+            document.getElementById('witcher-results-phase').style.display = 'none';
+            document.getElementById('witcher-draft-phase').style.display = 'block';
+
+            showDraftOptions();
+        }
+
+        // 2. Wyświetlenie 2 opcji dla gracza
+        function showDraftOptions() {
+            document.getElementById('draft-player-title').innerText = `GRACZ ${draftCurrentPlayer}`;
+            const container = document.getElementById('draft-options-container');
+            container.innerHTML = "";
+
+            // Jeśli w puli zostało mniej niż 2 karty (np. przy 5 graczach), weź to co jest
+            // Przy 5 graczach i 6 szkołach:
+            // G1: 6 dostępnych -> bierze 2, oddaje 1 (zostaje 5)
+            // G2: 5 dostępnych -> bierze 2, oddaje 1 (zostaje 4)
+            // G3: 4 dostępnych -> bierze 2, oddaje 1 (zostaje 3)
+            // G4: 3 dostępnych -> bierze 2, oddaje 1 (zostaje 2)
+            // G5: 2 dostępnych -> bierze 2, oddaje 1 (zostaje 1)
+            // Zawsze starczy!
+            
+            // Losujemy 2 indeksy z obecnej puli
+            const idx1 = Math.floor(Math.random() * draftPool.length);
+            let idx2 = Math.floor(Math.random() * draftPool.length);
+            while (idx1 === idx2 && draftPool.length > 1) {
+                idx2 = Math.floor(Math.random() * draftPool.length);
+            }
+            
+            // Pobieramy obiekty (jeśli tylko 1 został, to tablica ma 1 element)
+            const option1 = draftPool[idx1];
+            const option2 = draftPool.length > 1 ? draftPool[idx2] : null;
+
+            // Renderowanie przycisków
+            createDraftButton(container, option1);
+            if (option2) createDraftButton(container, option2);
+        }
+
+        function createDraftButton(container, school) {
+            const div = document.createElement('div');
+            div.className = `draft-card ${school.style}`;
+            div.onclick = () => selectSchool(school);
+            
+            div.innerHTML = `
+                <div class="draft-school-info">
+                    <span>${school.icon}</span>
+                    <span>${school.name}</span>
+                </div>
+                <button class="btn-select">WYBIERAM</button>
+            `;
+            container.appendChild(div);
+        }
+
+        // 3. Wybór szkoły przez gracza
+        function selectSchool(selectedSchool) {
+            // Dodaj do wyników
+            draftResults.push(selectedSchool);
+
+            // Usuń wybraną szkołę z puli (druga szkoła wraca do puli automatycznie, bo jej nie usuwamy)
+            draftPool = draftPool.filter(s => s.id !== selectedSchool.id);
+
+            // Przejdź do nast. gracza lub zakończ
+            if (draftCurrentPlayer < selectedPlayerCount) {
+                draftCurrentPlayer++;
+                showDraftOptions();
+            } else {
+                finishDraft();
+            }
+        }
+
+        // 4. Zakończenie i wyświetlenie wyników
+        function finishDraft() {
+            document.getElementById('witcher-draft-phase').style.display = 'none';
+            document.getElementById('witcher-results-phase').style.display = 'block';
+            
             const list = document.getElementById('witcher-results');
             list.innerHTML = "";
-            let pool = [...witcherSchools];
-            for (let i = pool.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [pool[i], pool[j]] = [pool[j], pool[i]];
-            }
-            for (let i = 0; i < selectedPlayerCount; i++) {
-                const witcher = pool[i];
+            
+            const currentResTable = startingResources[selectedPlayerCount] || startingResources[1];
+
+            // Generowanie listy wyników
+            draftResults.forEach((witcher, index) => {
+                const res = currentResTable[index];
                 const li = document.createElement('li');
                 li.className = `witcher-card ${witcher.style}`;
-                li.style.animationDelay = `${i * 0.1}s`;
-                li.innerHTML = `<span class="p-name">GRACZ ${i + 1}</span><span class="w-school">${witcher.icon} Szkoła ${witcher.name}</span>`;
+                li.style.animationDelay = `${index * 0.1}s`;
+                
+                li.innerHTML = `
+                    <div class="witcher-header">
+                        <span class="p-name">GRACZ ${index + 1}</span>
+                        <span class="w-school">${witcher.icon} Szkoła ${witcher.name}</span>
+                    </div>
+                    <div class="resource-group">
+                        <span>💰 ${res.gold} Monet</span>
+                        <span>🎴 ${res.cards} Karty</span>
+                    </div>
+                `;
                 list.appendChild(li);
-            }
+            });
+        }
+
+        function resetDraft() {
+            document.getElementById('witcher-results-phase').style.display = 'none';
+            document.getElementById('witcher-setup-phase').style.display = 'block';
         }
 
         // === LOGIKA ŻETONÓW (TERENY) ===
@@ -516,7 +697,7 @@
             });
         }
 
-        // === LOGIKA POTWORÓW (NOWA) ===
+        // === LOGIKA POTWORÓW ===
         const initialMonsterData = {
             lvl1: ["Utopiec", "Mglak", "Krabopająk", "Barghest", "Nekker", "Zgnilec", "Ghul", "Harpia", "Archespor", "Ekimma"],
             lvl2: ["Bies", "Baba Cmentarna", "Pokutnik", "Wilkołak", "Północnica", "Południca", "Mantikora", "Prządka", "Baba Wodna", "Szepciucha", "Wiwerna", "Gryf"],
@@ -541,7 +722,7 @@
             const randomIndex = Math.floor(Math.random() * currentObj.pool.length);
             const drawnItem = currentObj.pool.splice(randomIndex, 1)[0];
             
-            // Dodajemy na początek listy (najnowszy pierwszy)
+            // Dodajemy na początek listy
             currentObj.used.unshift(drawnItem);
             
             document.getElementById(`res-m_${level}`).innerText = drawnItem;
@@ -555,9 +736,8 @@
             container.innerHTML = "";
             currentObj.used.forEach(item => {
                 const token = document.createElement("div");
-                token.className = "monster-token"; // Klasa nieinteraktywna
+                token.className = "monster-token";
                 token.innerText = item;
-                // Brak onclick = brak powrotu pojedynczego potwora
                 container.appendChild(token);
             });
         }
@@ -565,7 +745,6 @@
         function resetMonsters() {
             if (confirm("Czy na pewno chcesz zresetować wszystkie potwory do pełnej puli? (Nowa gra)")) {
                 initMonsters();
-                // Czyścimy wyświetlane wyniki
                 document.getElementById('res-m_lvl1').innerText = "-";
                 document.getElementById('res-m_lvl2').innerText = "-";
                 document.getElementById('res-m_lvl3').innerText = "-";
